@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import backgroundImage from "../../assets/images/hero.webp";
 import { useCart } from "../../Context/CartContext";
+import { NavLink } from "react-router-dom";
 
 function Hero() {
   const { handleOpenCart } = useCart();
@@ -30,10 +31,12 @@ function Hero() {
           </p>
 
           <div className={styles.buttons}>
-            <button className={`${styles.btn} ${styles.explore}`}>
-              <FaUtensils className={styles.icon} />
-              Explore Menu
-            </button>
+            <NavLink to={"/menu"} style={{ textDecoration: "none" }}>
+              <button className={`${styles.btn} ${styles.explore}`}>
+                <FaUtensils className={styles.icon} />
+                Explore Menu
+              </button>
+            </NavLink>
             <button
               className={`${styles.btn} ${styles.cart}`}
               onClick={handleOpenCart}

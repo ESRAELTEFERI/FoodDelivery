@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CartPage.module.css";
 import { useCart } from "../Context/CartContext";
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
 import backgroundImage from "../assets/images/hero.webp";
+import CheckoutModal from "../Components/Cart/CheckOutModal";
 
 function CartPage() {
   const { cartItems, handleQuantityChange, handleRemoveFromCart } = useCart();
+  const [showCheckout, setShowCheckout] = useState(false);
 
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -49,9 +51,10 @@ function CartPage() {
                       <FaPlus />
                     </button>
                     <button
-                      className={styles.deleteBtn}
                       onClick={() => handleRemoveFromCart(item.id)}
+                      className={styles.deleteBtn}
                     >
+                      {/* <FaTrash className={styles.deleteBtn} /> */}
                       <FaTrash />
                     </button>
                   </div>
@@ -59,9 +62,15 @@ function CartPage() {
               </div>
             ))}
             <div className={styles.total}>
-              <button className={styles.checkoutBtn}>
+              <button
+                className={styles.checkoutBtn}
+                onClick={() => setShowCheckout(true)}
+              >
                 Proceed to Checkout
               </button>
+              {showCheckout && (
+                <CheckoutModal onClose={() => setShowCheckout(false)} />
+              )}
               <strong>Total: {total} ETB</strong>
             </div>
           </>

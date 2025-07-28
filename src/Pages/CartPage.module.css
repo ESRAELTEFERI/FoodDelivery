@@ -76,14 +76,17 @@ h2 {
 }
 
 /* Red delete button */
-.deleteBtn {
+/* .deleteBtn {
   background-color: #ef4444;
   color: #fff;
+} */
+.deleteBtn {
+  color: red;
+  background-color: transparent;
 }
-
-.deleteBtn:hover {
+/* .deleteBtn:hover {
   background-color: #dc2626;
-}
+} */
 
 .total {
   /* text-align: right; */
@@ -102,16 +105,16 @@ h2 {
   background-color: #f97316;
   color: white;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   /* float: right; */
 }
 
-.checkoutBtn:hover {
+/* .checkoutBtn:hover {
   background-color: #fb923c;
-}
+} */
 
 .itemInfo {
   flex: 1;

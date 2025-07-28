@@ -7,6 +7,13 @@ import { useCart } from "./Context/CartContext";
 import Cart from "./Components/Cart/Cart";
 import Footer from "./Components/Footer/Footer";
 import CartPage from "./Pages/CartPage";
+import SuccessMessage from "./Components/Cart/SuccessMessage";
+import CheckoutModal from "./Components/Cart/CheckOutModal";
+import { AnimatePresence } from "framer-motion";
+import PageWrapper from "./Components/PageWrapper";
+import ScrollToTop from "./Components/ScrollToTop";
+import AboutUsPage from "./Pages/AboutUsPage";
+import Contact from "./Components/Contact/Contact";
 
 function App() {
   const {
@@ -17,28 +24,83 @@ function App() {
     handleCloseCart,
     handleOpenCart,
     handleRemoveFromCart,
+    showCheckoutModal,
+    setShowCheckoutModal,
   } = useCart();
 
   return (
     <div>
       <Router>
+        <ScrollToTop />
         <Header cartCount={cartItems.length} onCartClick={handleOpenCart} />
+        <SuccessMessage />
         {isCartOpen && (
           <Cart
             items={cartItems}
             onClose={handleCloseCart}
             onQuantityChange={handleQuantityChange}
             onRemove={handleRemoveFromCart}
+            onProceedToCheckout={() => {
+              handleCloseCart();
+              setShowCheckoutModal(true);
+            }}
           />
         )}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="/menu"
-            element={<MenuPage onAddToCart={handleAddToCart} />}
+
+        {showCheckoutModal && (
+          <CheckoutModal
+            cartItems={cartItems}
+            onClose={() => setShowCheckoutModal(false)}
           />
-          <Route path="/cart" element={<CartPage />} />
-        </Routes>
+        )}
+
+        {/* Animate route transitions */}
+        <AnimatePresence mode="wait">
+          <Routes>
+            {/* <Route path="/" element={<HomePage />} /> */}
+            <Route
+              path="/"
+              element={
+                <PageWrapper>
+                  <HomePage />
+                </PageWrapper>
+              }
+            />
+            <Route
+              path="/menu"
+              element={
+                <PageWrapper>
+                  <MenuPage onAddToCart={handleAddToCart} />
+                </PageWrapper>
+              }
+            />
+            <Route
+              path="/cart"
+              element={
+                <PageWrapper>
+                  <CartPage />
+                </PageWrapper>
+              }
+            />
+            <Route
+              path="/aboutus"
+              element={
+                <PageWrapper>
+                  <AboutUsPage />
+                </PageWrapper>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <PageWrapper>
+                  <Contact />
+                </PageWrapper>
+              }
+            />
+          </Routes>
+        </AnimatePresence>
+
         <Footer />
       </Router>
       {/* <Hero /> */}

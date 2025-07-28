@@ -2,7 +2,13 @@ import React from "react";
 import styles from "./Cart.module.css";
 import { FaPlus, FaMinus, FaTrash } from "react-icons/fa";
 
-function Cart({ items, onClose, onQuantityChange, onRemove }) {
+function Cart({
+  items,
+  onClose,
+  onQuantityChange,
+  onRemove,
+  onProceedToCheckout,
+}) {
   const total = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -46,7 +52,9 @@ function Cart({ items, onClose, onQuantityChange, onRemove }) {
             <div className={styles.totalLabel}>Total:</div>
             <div className={styles.totalAmount}>{total} ETB</div>
           </div>
-          <button className={styles.checkoutBtn}>Proceed to Checkout</button>
+          <button className={styles.checkoutBtn} onClick={onProceedToCheckout}>
+            Proceed to Checkout
+          </button>
         </>
       )}
     </div>
