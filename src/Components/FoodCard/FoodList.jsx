@@ -2,6 +2,7 @@ import React from "react";
 import FoodCard from "./FoodCard";
 import sampleImage from "../../assets/images/hero.webp";
 import { useCart } from "../../Context/CartContext";
+// import { BiFontSize } from "react-icons/bi";
 
 const foodItems = [
   {
@@ -14,7 +15,8 @@ const foodItems = [
   {
     id: 2,
     name: "Tibs",
-    description: "Sautéed meat cubes with onions, garlic, and pepper.",
+    description:
+      "Sautéed meat cubes with onions, garlic, and pepper,onions, garlic, and pepper.",
     price: 100,
     image: sampleImage,
   },
@@ -42,7 +44,8 @@ const foodItems = [
   {
     id: 7,
     name: "QQL",
-    description: "Spicy chicken stew with hard-boiled eggs.",
+    description:
+      "Spicy chicken stew with hard-boiled eggs. chicken stew with hard-boiled eggs",
     price: 150,
     image: sampleImage,
   },
@@ -53,25 +56,38 @@ function FoodList() {
 
   return (
     <div
-      style={{
-        backgroundColor: "#fff",
-        display: "flex",
-        gap: "2rem",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        padding: "2rem",
-      }}
+      style={{ backgroundColor: "#fff", marginBottom: "0", paddingBottom: "0" }}
     >
-      {foodItems.map((item) => (
-        <FoodCard
-          key={item.id}
-          image={item.image}
-          name={item.name}
-          description={item.description}
-          price={item.price}
-          onAddToCart={() => handleAddToCart(item)}
-        />
-      ))}
+      <div
+        style={{
+          textAlign: "center",
+          fontSize: "2.5rem",
+          fontWeight: "700",
+          padding: "30px",
+        }}
+      >
+        Signature Dishes
+      </div>
+      <div
+        style={{
+          display: "flex",
+          gap: "2rem",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          padding: "2rem",
+        }}
+      >
+        {foodItems.map((item) => (
+          <FoodCard
+            key={item.id}
+            image={item.image}
+            name={item.name}
+            description={item.description}
+            price={item.price}
+            onAddToCart={() => handleAddToCart(item)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

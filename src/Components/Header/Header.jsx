@@ -2,8 +2,14 @@ import React from "react";
 import styles from "./Header.module.css";
 import { FaShoppingCart, FaUserPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useCart } from "../../Context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  // const { cartCount, handleOpenCart } = useCart();
+  const { cartItems } = useCart();
+  const navigate = useNavigate();
+
   return (
     <header className={styles.header}>
       <div className={styles.leftSection}>
@@ -51,9 +57,15 @@ function Header() {
           <FaUserPlus style={{ marginRight: "5px", fontSize: "1rem" }} /> Sign
           Up
         </button>
-        <div className={styles.cart}>
+        {/* <div className={styles.cart} onClick={handleOpenCart}>
           <FaShoppingCart />
-          <span className={styles.badge}>0</span>
+          {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
+        </div> */}
+        <div className={styles.cart} onClick={() => navigate("/cart")}>
+          <FaShoppingCart />
+          {cartItems.length > 0 && (
+            <span className={styles.badge}>{cartItems.length}</span>
+          )}
         </div>
       </div>
     </header>

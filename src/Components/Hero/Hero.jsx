@@ -7,9 +7,12 @@ import {
   FaLeaf,
   FaStar,
 } from "react-icons/fa";
-import backgroundImage from "../../assets/images/hero.webp"; // Replace with actual hero image
+import backgroundImage from "../../assets/images/hero.webp";
+import { useCart } from "../../Context/CartContext";
 
 function Hero() {
+  const { handleOpenCart } = useCart();
+
   return (
     <section
       className={styles.hero}
@@ -31,7 +34,10 @@ function Hero() {
               <FaUtensils className={styles.icon} />
               Explore Menu
             </button>
-            <button className={`${styles.btn} ${styles.cart}`}>
+            <button
+              className={`${styles.btn} ${styles.cart}`}
+              onClick={handleOpenCart}
+            >
               <FaShoppingCart className={styles.icon} />
               My Cart
             </button>

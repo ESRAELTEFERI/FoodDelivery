@@ -1,13 +1,12 @@
 import React from "react";
-import MenuSection from "../Components/MenuSection/menuSection";
-
+import MenuSection from "../Components/MenuSection/MenuSection";
 function Menu() {
   return (
-    <div style={{ padding: "2rem" }}>
+    <div style={{ padding: "2rem", backgroundColor: "#ffe " }}>
       <h2
         style={{ textAlign: "center", marginBottom: "2rem", fontSize: "2rem" }}
       >
-        Our Delicious Menu
+        Our Menu
       </h2>
       <MenuSection />
     </div>

@@ -1,10 +1,18 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    const stored = localStorage.getItem("cart");
+    return stored ? JSON.parse(stored) : [];
+  });
+
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const handleAddToCart = (item) => {
     setCartItems((prev) => {
@@ -44,6 +52,7 @@ export function CartProvider({ children }) {
         handleCloseCart,
         handleOpenCart,
         handleRemoveFromCart,
+        cartCount,
       }}
     >
       {children}

@@ -1,10 +1,12 @@
 import React from "react";
 import Header from "./Components/Header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home";
-import Menu from "./Pages/Menu";
+import HomePage from "./Pages/HomePage";
+import MenuPage from "./Pages/MenuPage";
 import { useCart } from "./Context/CartContext";
 import Cart from "./Components/Cart/Cart";
+import Footer from "./Components/Footer/Footer";
+import CartPage from "./Pages/CartPage";
 
 function App() {
   const {
@@ -30,12 +32,14 @@ function App() {
           />
         )}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route
             path="/menu"
-            element={<Menu onAddToCart={handleAddToCart} />}
+            element={<MenuPage onAddToCart={handleAddToCart} />}
           />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
+        <Footer />
       </Router>
       {/* <Hero /> */}
     </div>
