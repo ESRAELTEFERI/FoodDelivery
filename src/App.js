@@ -14,6 +14,10 @@ import PageWrapper from "./Components/PageWrapper";
 import ScrollToTop from "./Components/ScrollToTop";
 import AboutUsPage from "./Pages/AboutUsPage";
 import Contact from "./Components/Contact/Contact";
+import SettingsPage from "./Pages/SettingsPage";
+import Forget from "./Components/Auth/Forget";
+import VerifyCode from "./Components/Auth/VerifyCode";
+import ChangePassword from "./Components/Auth/ChangePassword";
 
 function App() {
   const {
@@ -95,6 +99,40 @@ function App() {
               element={
                 <PageWrapper>
                   <Contact />
+                </PageWrapper>
+              }
+            />
+
+            <Route
+              path="/settings"
+              element={
+                <PageWrapper>
+                  <SettingsPage />
+                </PageWrapper>
+              }
+            />
+
+            <Route
+              path="/forgot-password"
+              element={
+                <PageWrapper>
+                  <Forget />
+                </PageWrapper>
+              }
+            />
+            <Route
+              path="/verify-code"
+              element={
+                <PageWrapper>
+                  <VerifyCode />
+                </PageWrapper>
+              }
+            />
+            <Route
+              path="/change-password"
+              element={
+                <PageWrapper>
+                  <ChangePassword />
                 </PageWrapper>
               }
             />

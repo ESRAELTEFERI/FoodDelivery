@@ -65,3 +65,9 @@
   color: #f97316;
   cursor: pointer;
 }
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}

@@ -19,8 +19,15 @@
   font-weight: 500;
 }
 
-.activeFilter {
-  background-color: #0fa958 !important;
+.filterContainer button.activeFilter {
+  /* background-color: #21d627 !important; */
+  background: linear-gradient(135deg, #21d627, #009e96);
+  color: white;
+}
+
+.filterContainer button.favoriteFilterActive {
+  /* background-color: #ff4d4d !important;*/
+  background: linear-gradient(to right, #f97316, #ef4444);
   color: white;
 }
 

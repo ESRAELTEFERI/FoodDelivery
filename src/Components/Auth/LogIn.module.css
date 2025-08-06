@@ -72,3 +72,12 @@
   border-radius: 8px;
   font-size: 0.9rem;
 }
+
+.forgot {
+  margin-top: 10px;
+  text-align: right;
+  color: #6f42c1;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
