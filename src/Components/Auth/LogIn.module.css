@@ -75,9 +75,9 @@
 
 .forgot {
   margin-top: 10px;
-  text-align: right;
-  color: #6f42c1;
-  font-weight: bold;
+  text-align: left;
+  color: #f97316;
+  font-weight: 500;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
 }

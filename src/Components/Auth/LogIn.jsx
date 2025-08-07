@@ -130,11 +130,6 @@ function Login({ onClose, onSwitchToRegister }) {
           </button>
         </form>
 
-        <p className={styles.switchLink}>
-          Don’t have an account?{" "}
-          <span onClick={onSwitchToRegister}>Register</span>
-        </p>
-
         <p
           className={styles.forgot}
           onClick={() => {
@@ -143,6 +138,10 @@ function Login({ onClose, onSwitchToRegister }) {
           }}
         >
           Forgot Password?
+        </p>
+        <p className={styles.switchLink}>
+          Don’t have an account?{" "}
+          <span onClick={onSwitchToRegister}>Register</span>
         </p>
 
         {/* <div className={styles.demoBox}>
